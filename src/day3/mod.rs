@@ -36,15 +36,6 @@ enum Piece {
     Char(char),
 }
 
-impl Piece {
-    fn is_symbol(&self) -> bool {
-        match self {
-            Piece::Char(c) if *c != '.' => true,
-            _ => false,
-        }
-    }
-}
-
 fn lex(s: &str) -> Option<anyhow::Result<(Piece, &str)>> {
     let mut chars = s.char_indices();
 
@@ -237,13 +228,6 @@ impl super::day::Day for Day3 {
 #[cfg(test)]
 mod test {
     use super::*;
-
-    #[test]
-    fn is_symbol() {
-        assert_eq!(Piece::Number(123, 3).is_symbol(), false);
-        assert_eq!(Piece::Char('.').is_symbol(), false);
-        assert_eq!(Piece::Char('$').is_symbol(), true);
-    }
 
     #[test]
     fn lex_piece() {

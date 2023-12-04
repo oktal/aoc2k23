@@ -43,7 +43,7 @@ fn read_lines(path: impl AsRef<Path>) -> anyhow::Result<Vec<String>> {
 
 pub(super) fn solve<D: Day>(file: impl AsRef<Path>, part: Part) -> anyhow::Result<()>
 where
-    <<D as Day>::Item as FromStr>::Err: Debug,
+    <<D as Day>::Item as FromStr>::Err: Debug + Display,
 {
     let day = D::DAY;
 
@@ -56,7 +56,7 @@ where
         .into_iter()
         .map(|l| l.parse())
         .collect::<Result<Vec<_>, _>>()
-        .unwrap();
+        .map_err(|e| anyhow!("{e}"))?;
 
     match part {
         Part::One => {
