@@ -228,7 +228,7 @@ impl super::day::Day for Day5 {
     type Item = String;
     type Answer = u64;
 
-    const DAY: usize = 4;
+    const DAY: usize = 5;
 
     fn part_1(lines: Vec<Self::Item>) -> anyhow::Result<Self::Answer> {
         let mut lines = lines.into_iter();
